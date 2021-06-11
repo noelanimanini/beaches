@@ -1,48 +1,64 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, Button } from "react-native";
-// import {
-//   GoogleSigninButton,
-//   statusCodes,
-// } from "@react-native-google-signin/google-signin";
-// import auth from "@react-native-firebase/auth";
-// import { GoogleSignin } from "@react-native-google-signin/google-signin";
+import {
+  TextInput,
+  TouchableOpacity,
+  Text,
+  View,
+  StyleSheet,
+} from "react-native";
 
-// GoogleSignin.configure({
-//   webClientId: "",
-//   offlineAccess: true,
-// });
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-export default function LoginScreen() {
-  const createUser = () => {
-    // auth()
-    //   .createUserWithEmailAndPassword(
-    //     "jane.doe@example.com",
-    //     "SuperSecretPassword!"
-    //   )
-    //   .then(() => {
-    //     console.log("User account created & signed in!");
-    //   })
-    //   .catch((error) => {
-    //     if (error.code === "auth/email-already-in-use") {
-    //       console.log("That email address is already in use!");
-    //     }
-    //     if (error.code === "auth/invalid-email") {
-    //       console.log("That email address is invalid!");
-    //     }
-    //     console.error(error);
-    //   });
+  const signIn = () => {
+    doSignInUser(email, password);
   };
+
+  const doSignInUser = (email, password) => {
+    fetch("https://beaches-backend.herokuapp.com/", {
+      method: "",
+    });
+  };
+
   return (
-    <>
-      <View>
-        <Button title="create user" onPress={() => createUser()}></Button>
-      </View>
-    </>
+    <View style={styles.container}>
+      <TextInput
+        placeholder="Email"
+        keyboardType="email-address"
+        autoCapitalize="none"
+        onChangeText={(text) => setEmail(text)}
+        style={styles.input}
+      />
+      <TextInput
+        placeholder="Password"
+        textContentType="password"
+        secureTextEntry
+        autoCapitalize="none"
+        onChangeText={(text) => setPassword(text)}
+        style={styles.input}
+      />
+      <TouchableOpacity
+        onPress={() => {
+          signIn();
+        }}
+      >
+        <Text>Submit</Text>
+      </TouchableOpacity>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  input: {
+    height: 40,
+    marginBottom: 20,
+    width: 310,
+    borderWidth: 1,
   },
 });
