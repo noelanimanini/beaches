@@ -3,7 +3,7 @@ import React from 'react';
 import { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View ,Image} from 'react-native';
 import SplashScreen from './app/screens/SplashScreen';
 const Stack = createStackNavigator();
 export default function App() {
@@ -15,18 +15,9 @@ export default function App() {
           cardStyle: { backgroundColor: "#0000" },
         }}
       >
-        <Stack.Screen name="Splash" component={SplashScreen} />
+        <Stack.Screen name="SplashScreen" component={SplashScreen} />
       </Stack.Navigator>
     </NavigationContainer>
 
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
